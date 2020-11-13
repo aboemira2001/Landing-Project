@@ -46,7 +46,6 @@ function activeSection(){
 					let linkText=entries[0].target.dataset.nav;
 					//Style the the related navbar
 						navs.forEach((nav)=>{
-							console.log(nav);
 						if (linkText==nav.textContent) {
 							nav.classList.add("active");
 						}
@@ -57,9 +56,12 @@ function activeSection(){
 				}
 				else{
 					entries[0].target.className="";
+					navs.forEach((nav)=>{
+							nav.classList.remove("active");
+						});
 				}
 			}
-		let observer = new IntersectionObserver(callBackFunction,{threshold:1.0});
+		let observer = new IntersectionObserver(callBackFunction,{threshold:0.8});
 		observer.observe(section);
 	});
 }
